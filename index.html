@@ -1182,34 +1182,97 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section id="gallery">
   <div class="section-inner">
     <p class="section-label">Our work</p>
-    <h2>Before & After</h2>
-    <p class="section-sub">Every vehicle gets our full attention. Results speak louder than words — photos coming soon.</p>
+    <h2>The Results</h2>
+    <p class="section-sub">Every vehicle gets our full attention from start to finish. Tap any photo to view it full screen.</p>
     <div class="gallery-grid">
-      <div class="gallery-item tall">
-        <div class="gallery-placeholder"><span class="ph-icon">📷</span><p>Before & After — Full Detail</p></div>
+
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="Images/Black-Escalade-O.webp" alt="Black Cadillac Escalade — Exterior Detail" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <span class="gallery-cap-title">Black Cadillac Escalade</span>
+            <span class="gallery-cap-sub">Exterior Detail</span>
+          </div>
+        </div>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder"><span class="ph-icon">📷</span><p>Paint Correction</p></div>
+
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="Images/Blue-Bronco-O.webp" alt="Blue Ford Bronco — Exterior Detail" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <span class="gallery-cap-title">Blue Ford Bronco</span>
+            <span class="gallery-cap-sub">Exterior Detail</span>
+          </div>
+        </div>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder"><span class="ph-icon">📷</span><p>Interior Detail</p></div>
+
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="Images/Green-BMW-I.webp" alt="Green BMW — Interior Detail" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <span class="gallery-cap-title">Green BMW</span>
+            <span class="gallery-cap-sub">Interior Detail</span>
+          </div>
+        </div>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder"><span class="ph-icon">📷</span><p>Ceramic Coating</p></div>
+
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="Images/Green-BMW-O.webp" alt="Green BMW — Exterior Detail" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <span class="gallery-cap-title">Green BMW</span>
+            <span class="gallery-cap-sub">Exterior Detail</span>
+          </div>
+        </div>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder"><span class="ph-icon">📷</span><p>Wheel & Tire</p></div>
+
+      <div class="gallery-item" onclick="openLightbox(4)">
+        <img src="Images/Mache-I.webp" alt="Ford Mustang Mach-E — Interior Detail" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <span class="gallery-cap-title">Ford Mustang Mach-E</span>
+            <span class="gallery-cap-sub">Interior Detail</span>
+          </div>
+        </div>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder"><span class="ph-icon">📷</span><p>Engine Bay</p></div>
+
+      <div class="gallery-item" onclick="openLightbox(5)">
+        <img src="Images/Orange-BMW-I.webp" alt="Orange BMW — Interior Detail" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <span class="gallery-cap-title">Orange BMW</span>
+            <span class="gallery-cap-sub">Interior Detail</span>
+          </div>
+        </div>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder"><span class="ph-icon">📷</span><p>Exterior Shine</p></div>
+
+      <div class="gallery-item" onclick="openLightbox(6)">
+        <div class="gallery-placeholder"><span class="ph-icon">📷</span><p>Before & After — Coming Soon</p></div>
       </div>
+
+      <div class="gallery-item" onclick="openLightbox(7)">
+        <div class="gallery-placeholder"><span class="ph-icon">📷</span><p>Before & After — Coming Soon</p></div>
+      </div>
+
     </div>
-    <p class="gallery-note">Follow <a href="https://www.instagram.com/sb_autoworksnj/" target="_blank" style="color:var(--gold);text-decoration:none;">@SB_AutoWorksNJ</a> on Instagram for the latest transformations.</p>
+    <p class="gallery-note">Follow <a href="https://www.instagram.com/sbauto_works/" target="_blank" style="color:var(--gold);text-decoration:none;">@sbauto_works</a> on Instagram for the latest transformations.</p>
   </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+  <button class="lightbox-prev" onclick="event.stopPropagation(); shiftLightbox(-1)" aria-label="Previous">‹</button>
+  <button class="lightbox-next" onclick="event.stopPropagation(); shiftLightbox(1)" aria-label="Next">›</button>
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div class="lightbox-info">
+      <span class="lightbox-title" id="lightboxTitle"></span>
+      <span class="lightbox-sub" id="lightboxSub"></span>
+    </div>
+  </div>
+</div>
+
 
 
 <!-- LEAD CAPTURE -->
@@ -1318,6 +1381,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     window.location.href = 'mailto:simon.betancurt123@gmail.com?subject=10%25%20Off%20Discount%20Request&body=Hi%2C%20I%27d%20like%20to%20claim%20my%2010%25%20off%20first%20detail%20discount.%20My%20email%20is%3A%20' + encodeURIComponent(email);
   }
 
+    // GALLERY LIGHTBOX
+  const galleryData = [
+    { src: 'Images/Black-Escalade-O.webp', title: 'Black Cadillac Escalade', sub: 'Exterior Detail' },
+    { src: 'Images/Blue-Bronco-O.webp',    title: 'Blue Ford Bronco',         sub: 'Exterior Detail' },
+    { src: 'Images/Green-BMW-I.webp',      title: 'Green BMW',                sub: 'Interior Detail' },
+    { src: 'Images/Green-BMW-O.webp',      title: 'Green BMW',                sub: 'Exterior Detail' },
+    { src: 'Images/Mache-I.webp',          title: 'Ford Mustang Mach-E',      sub: 'Interior Detail' },
+    { src: 'Images/Orange-BMW-I.webp',     title: 'Orange BMW',               sub: 'Interior Detail' },
+    { src: null, title: 'Coming Soon', sub: '' },
+    { src: null, title: 'Coming Soon', sub: '' },
+  ];
+
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    if (galleryData[index].src === null) return;
+    currentIndex = index;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function shiftLightbox(dir) {
+    let next = currentIndex + dir;
+    // Skip placeholder slots
+    while (next >= 0 && next < galleryData.length && galleryData[next].src === null) next += dir;
+    if (next < 0 || next >= galleryData.length) return;
+    currentIndex = next;
+    updateLightbox();
+  }
+
+  function updateLightbox() {
+    const item = galleryData[currentIndex];
+    document.getElementById('lightboxImg').src = item.src;
+    document.getElementById('lightboxImg').alt = item.title + ' — ' + item.sub;
+    document.getElementById('lightboxTitle').textContent = item.title;
+    document.getElementById('lightboxSub').textContent = item.sub;
+ }
+    
   // CALCULATOR
   const prices = { '95': 95, '145': 145, '235': 235 };
   let selectedWeeks = 4;
