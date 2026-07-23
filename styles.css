@@ -71,11 +71,33 @@
   .tier-note { font-size: .75rem; color: var(--muted); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
 
   /* ADDONS */
-  .addons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 1rem; }
+  .addons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 0; padding-top: 0; }
   .addon-item { background: var(--surface); padding: 1.25rem 1.5rem; transition: background .2s; }
   .addon-item:hover { background: var(--surface2); }
   .addon-item h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; margin-bottom: .3rem; }
   .addon-item p { font-size: .8rem; color: var(--muted); }
+
+  /* TIER "WHAT'S INCLUDED" DROPDOWNS */
+  .tier-details { margin-top: 1rem; }
+  .tier-summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-display); font-weight: 700; font-size: .82rem; letter-spacing: .07em; text-transform: uppercase; color: var(--gold); padding: .75rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: color .2s; }
+  .tier-summary:hover { color: var(--gold-light); }
+  .tier-summary::-webkit-details-marker { display: none; }
+  .tier-summary::after { content: '▾'; font-size: 1rem; transition: transform .2s; }
+  .tier-details[open] .tier-summary::after { transform: rotate(180deg); }
+  .tier-details[open] .tier-summary { border-bottom-color: rgba(201,168,76,0.3); }
+  .tier-details .tier-list { margin-top: 1rem; }
+
+  /* ADD-ONS DROPDOWN — bigger, more eye-catching */
+  .addons-collapse { border: 1px solid rgba(201,168,76,0.4); background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.02)); box-shadow: 0 4px 24px rgba(201,168,76,0.08); }
+  .addons-toggle { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2rem; font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; letter-spacing: .05em; text-transform: uppercase; color: var(--gold); transition: background .2s; }
+  .addons-toggle:hover { background: rgba(201,168,76,0.08); }
+  .addons-toggle::-webkit-details-marker { display: none; }
+  .addons-toggle::after { content: '▾'; font-size: 1.3rem; transition: transform .25s; margin-left: 1rem; flex-shrink: 0; }
+  .addons-collapse[open] .addons-toggle::after { transform: rotate(180deg); }
+  .addons-collapse[open] .addons-toggle { border-bottom: 1px solid rgba(201,168,76,0.35); }
+  @media (max-width: 768px) {
+    .addons-toggle { padding: 1.25rem 1.25rem; font-size: .95rem; }
+  }
 
   /* FAQ */
   #faq { background: var(--black); border-top: 1px solid var(--border); }
@@ -377,10 +399,10 @@
 /* REVIEWS */
 #reviews { background: var(--black); border-top: 1px solid var(--border); }
 .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem; }
-.review-card { border: 1px solid var(--border); background: var(--surface2); padding: 1.75rem; display: flex; flex-direction: column; gap: .85rem; }
-.review-stars { color: var(--gold); font-size: .9rem; letter-spacing: .1em; }
+.review-card { border: 1px solid var(--border); background: var(--surface2); padding: 1.75rem; display: flex; flex-direction: column; gap: .5rem; }
+.review-author { font-family: var(--font-display); font-weight: 800; font-size: 1rem; letter-spacing: .04em; text-transform: uppercase; color: var(--white); }
+.review-stars { color: var(--gold); font-size: .9rem; letter-spacing: .1em; margin-bottom: .35rem; }
 .review-body { font-size: .9rem; color: var(--muted); line-height: 1.6; flex: 1; }
-.review-author { font-family: var(--font-display); font-weight: 700; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; color: var(--white); }
 
 /* SUBPAGE HERO (service & location pages) */
 .hero-subpage { min-height: 62vh; justify-content: center; padding-top: 9rem; padding-bottom: 3rem; }

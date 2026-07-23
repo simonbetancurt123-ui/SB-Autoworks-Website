@@ -101,7 +101,7 @@ const hamburger = document.getElementById('hamburger');
  }
     
   // CALCULATOR
-  const prices = { '95': 95, '145': 145, '235': 235 };
+  const MIN_VISIT_PRICE = 85; // hard floor — no plan visit is ever quoted below this
   let selectedWeeks = 4;
   let selectedDisc = 0.25;
 
@@ -111,11 +111,13 @@ const hamburger = document.getElementById('hamburger');
     const base = parseFloat(document.getElementById('calcPackage').value);
     const weeksPerYear = 52;
     const visits = Math.round(weeksPerYear / selectedWeeks);
-    const memberPrice = base * (1 - selectedDisc);
+    let memberPrice = base * (1 - selectedDisc);
+    if (memberPrice < MIN_VISIT_PRICE) memberPrice = MIN_VISIT_PRICE; // floor protects margin on the smallest package
+    const effectiveDisc = 1 - (memberPrice / base);
     const fullYear = base * visits;
     const memberYear = memberPrice * visits;
     const savings = fullYear - memberYear;
-    const discPct = Math.round(selectedDisc * 100);
+    const discPct = Math.round(effectiveDisc * 100);
 
     document.getElementById('rFullVisit').textContent = fmt(base);
     document.getElementById('rMemberVisit').textContent = fmt(memberPrice);
@@ -170,6 +172,6 @@ const hamburger = document.getElementById('hamburger');
       formStatus.className = 'form-status error';
     } finally {
       formSubmitBtn.disabled = false;
-      formSubmitBtn.textContent = 'Send My Quote Request →';
+      formSubmitBtn.textContent = 'Send Quote Request →';
     }
   });
