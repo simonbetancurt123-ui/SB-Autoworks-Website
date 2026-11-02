@@ -33,6 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="Images/favicon-logo.png">
+<link rel="preload" as="image" href="Images/Green-BMW-O.webp" fetchpriority="high">
 
 <!-- Local Business Schema -->
 <script type="application/ld+json">
@@ -313,6 +314,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="hero-v2.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -482,38 +484,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="top">
-  <div class="hero-bg"></div>
-  <div class="hero-accent"></div>
-  <div class="hero-stripe"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">South Jersey Mobile Detailing</p>
-    <h1>
-      Excellence<br>
-      <span class="line-gold">Delivered.</span>
-    </h1>
-    <p class="hero-sub">Professional mobile detailing, ceramic coatings, and paint correction — delivered to your driveway. Serving South Jersey with 5-star results.</p>
-    <div class="hero-actions">
-      <a href="#book" class="btn-primary">Book a Detail</a>
-      <a href="#services" class="btn-secondary">View Services</a>
-    </div>
+<!-- HERO (v2) -->
+<section class="hero2" id="top">
+  <div class="hero2-media" id="heroSlides" aria-roledescription="carousel" aria-label="Recent detailing work">
+    <img class="hero2-slide is-active" src="Images/Green-BMW-O.webp" fetchpriority="high" alt="Freshly detailed green BMW M3" data-title="BMW M3" data-sub="Exterior Detail" style="--pos:22% 55%;--pos-m:30% 60%">
+    <img class="hero2-slide" data-src="Images/Black-Escalade-Gloss-O.webp" alt="Gloss black Cadillac Escalade after a detail" data-title="Cadillac Escalade" data-sub="Exterior Detail" style="--pos:55% 62%;--pos-m:55% 52%">
+    <img class="hero2-slide" data-src="Images/White-F250-O.webp" alt="White Ford F-250 Super Duty after a wash" data-title="Ford F-250 Super Duty" data-sub="Exterior Detail" style="--pos:40% 58%;--pos-m:35% 46%">
+    <img class="hero2-slide" data-src="Images/Gray-GMC-O.webp" alt="GMC Sierra AT4X after an exterior detail" data-title="GMC Sierra AT4X" data-sub="Exterior Detail" style="--pos:55% 55%;--pos-m:55% 46%">
+    <img class="hero2-slide" data-src="Images/Blue-Bronco-O.webp" alt="Ford Bronco Raptor after a detail" data-title="Ford Bronco Raptor" data-sub="Exterior Detail" style="--pos:45% 55%;--pos-m:45% 55%">
+    <img class="hero2-slide" data-src="Images/Orange-BMW-I.webp" alt="Clean BMW interior with tan leather seats" data-title="BMW X5" data-sub="Interior Detail" style="--pos:35% 50%;--pos-m:30% 55%">
   </div>
-  <div class="hero-stats">
-    <div>
-      <span class="stat-num">5★</span>
-      <span class="stat-label">Google Rating</span>
+  <div class="hero2-shade"></div>
+  <div class="hero2-grain"></div>
+
+  <div class="hero2-inner">
+    <div class="hero2-content">
+      <a href="#reviews" class="hero2-rating">
+        <span class="hero2-stars">★★★★★</span>
+        <span><strong>5.0</strong> on Google</span>
+      </a>
+      <p class="hero-eyebrow">South Jersey Mobile Detailing</p>
+      <h1 class="hero2-title">
+        Showroom Shine.<br>
+        <span class="line-gold">Your Driveway.</span>
+      </h1>
+      <p class="hero2-sub">Ceramic coatings, paint correction &amp; full interior/exterior detailing — fully self-contained, so we bring the water, power and pro-grade products to you.</p>
+      <div class="hero-actions">
+        <a href="#book" class="btn-primary hero2-cta">Book a Detail <span aria-hidden="true">→</span></a>
+        <a href="tel:+18565380407" class="btn-secondary hero2-call">Call (856) 538-0407</a>
+      </div>
+      <p class="hero2-from">Packages from <strong>$105</strong> · Replies within minutes</p>
     </div>
-    <div>
-      <span class="stat-num">100%</span>
-      <span class="stat-label">Mobile Service</span>
-    </div>
-    <div>
-      <span class="stat-num">LLC</span>
-      <span class="stat-label">SBR Ventures LLC</span>
-    </div>
+
+    <figure class="hero2-quote">
+      <blockquote>“My truck was a mess and they made it look better than the day I bought it.”</blockquote>
+      <figcaption>— Ron, Google review</figcaption>
+    </figure>
   </div>
+
+  <div class="hero2-caption" aria-live="polite"><span></span><em id="heroCapTitle">BMW M3</em>&nbsp;·&nbsp;<b id="heroCapSub">Exterior Detail</b></div>
+  <div class="hero2-dots" id="heroDots"><button class="hero2-dot is-active" aria-label="Show slide 1"><i></i></button><button class="hero2-dot" aria-label="Show slide 2"><i></i></button><button class="hero2-dot" aria-label="Show slide 3"><i></i></button><button class="hero2-dot" aria-label="Show slide 4"><i></i></button><button class="hero2-dot" aria-label="Show slide 5"><i></i></button><button class="hero2-dot" aria-label="Show slide 6"><i></i></button></div>
 </section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item"><span class="trust-num">5.0★</span><span class="trust-label">Google Rating</span></div>
+  <div class="trust-item"><span class="trust-num">100%</span><span class="trust-label">We Come To You</span></div>
+  <div class="trust-item"><span class="trust-num">3+ Yrs</span><span class="trust-label">Pro Experience</span></div>
+  <div class="trust-item"><span class="trust-num">Insured</span><span class="trust-label">Licensed &amp; Insured LLC</span></div>
+</div>
 
 <section id="services">
   <div class="section-inner">
@@ -1415,5 +1434,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script src="main.js" defer></script>
+<script src="hero-slider.js" defer></script>
 </body>
 </html>
