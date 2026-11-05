@@ -473,3 +473,10 @@
   .reviews-toggle { display: block; width: 100%; margin-top: 1.5rem; background: none; cursor: pointer; }
   .reviews-grid.show-all + .reviews-toggle { display: none; }
 }
+
+/* Recent-job sections on town pages */
+.job-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 360px)); gap: 1rem; margin: 1rem 0 1.5rem; }
+.job-photo { margin: 0; border: 1px solid var(--border); background: var(--surface2); }
+.job-photo img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.job-photo figcaption { font-size: .8rem; color: var(--muted); padding: .6rem .8rem; letter-spacing: .04em; text-transform: uppercase; }
+.job-review { margin-bottom: 2rem; }
