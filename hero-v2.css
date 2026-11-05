@@ -157,3 +157,6 @@
   .hero2-dot { width: 28px; }
 }
 @media (prefers-reduced-motion: reduce) { .hero2-dot.is-active i { animation: none; width: 100%; } .hero2-slide { transition: opacity .3s; } }
+
+/* eyebrow now lives inside the H1 for SEO; keep its small styling */
+.hero2-title .hero-eyebrow { line-height: 1.4; text-shadow: none; }
