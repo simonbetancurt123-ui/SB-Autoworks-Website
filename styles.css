@@ -465,3 +465,11 @@
   .float-group, .float-btn { display: none !important; }
   body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
 }
+
+/* ===== Reviews: collapse to 4 on phones ===== */
+.reviews-toggle { display: none; }
+@media (max-width: 768px) {
+  .reviews-grid:not(.show-all) .review-card:nth-child(n+5) { display: none; }
+  .reviews-toggle { display: block; width: 100%; margin-top: 1.5rem; background: none; cursor: pointer; }
+  .reviews-grid.show-all + .reviews-toggle { display: none; }
+}

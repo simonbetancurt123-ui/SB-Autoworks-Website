@@ -181,3 +181,10 @@ const hamburger = document.getElementById('hamburger');
       formSubmitBtn.textContent = 'Send Quote Request →';
     }
   });
+
+  // Reviews: "Show more" on phones
+  const reviewsToggle = document.getElementById('reviewsToggle');
+  if (reviewsToggle) reviewsToggle.addEventListener('click', () => {
+    document.getElementById('reviewsGrid').classList.add('show-all');
+    reviewsToggle.setAttribute('aria-expanded', 'true');
+  });
