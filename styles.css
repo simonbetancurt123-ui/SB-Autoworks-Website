@@ -433,3 +433,35 @@
 .cta-strip { text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, #0f0c00, #1a1200, #0f0c00); border-top: 1px solid rgba(201,168,76,0.2); border-bottom: 1px solid rgba(201,168,76,0.2); }
 .cta-strip h2 { margin-bottom: .75rem; }
 .cta-strip p { font-size: .95rem; color: var(--muted); max-width: 480px; margin: 0 auto 2rem; }
+
+/* ===== Subpage photo header ===== */
+.hero-subpage.has-photo { isolation: isolate; }
+.sub-photo { position: absolute; top: 0; right: 0; bottom: 0; width: 60%; z-index: 0; pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 38%); mask-image: linear-gradient(to right, transparent 0%, #000 38%); }
+.sub-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.1) contrast(1.05) brightness(.85); }
+.sub-photo::after { content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(10,10,10,.8) 0%, rgba(10,10,10,0) 25%), linear-gradient(to top, #0a0a0a 0%, rgba(10,10,10,0) 30%); }
+.hero-subpage.has-photo .hero-content { z-index: 1; }
+.hero-subpage.has-photo h1 { text-shadow: 0 4px 30px rgba(0,0,0,.6); }
+@media (max-width: 768px) {
+  .sub-photo { width: 100%; -webkit-mask-image: none; mask-image: none; }
+  .sub-photo::after { background: linear-gradient(to bottom, rgba(10,10,10,.75) 0%, rgba(10,10,10,.55) 40%, rgba(10,10,10,.92) 100%); }
+  .hero-subpage.has-photo .hero-sub { color: rgba(245,245,245,.85); }
+}
+
+/* ===== "Read all reviews" button ===== */
+.reviews-more { text-align: center; margin-top: 2.5rem; }
+
+/* ===== Mobile call / text bar ===== */
+.m-actionbar { display: none; }
+@media (max-width: 768px) {
+  .m-actionbar { display: grid; grid-template-columns: 1fr 1fr 1.4fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000;
+    background: rgba(10,10,10,.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,189,89,.25); padding: .55rem .6rem calc(.55rem + env(safe-area-inset-bottom)); gap: .5rem; }
+  .m-ab-btn { display: flex; align-items: center; justify-content: center; gap: .4rem; min-height: 48px;
+    font-family: var(--font-display); font-weight: 800; font-size: .95rem; letter-spacing: .08em; text-transform: uppercase;
+    text-decoration: none; color: var(--white); border: 1px solid rgba(245,245,245,.22); }
+  .m-ab-quote { background: var(--gold); color: var(--black); border-color: var(--gold); }
+  .float-group, .float-btn { display: none !important; }
+  body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
+}

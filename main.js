@@ -1,3 +1,6 @@
+// Footer year stays current automatically
+  document.querySelectorAll('.js-year').forEach(el => { el.textContent = new Date().getFullYear(); });
+
 const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
   hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
@@ -26,7 +29,7 @@ const hamburger = document.getElementById('hamburger');
   const leadSubmitBtn = document.getElementById('leadSubmitBtn');
   const leadStatus = document.getElementById('leadStatus');
 
-  leadForm.addEventListener('submit', async function(e) {
+  if (leadForm) leadForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     leadSubmitBtn.disabled = true;
     leadSubmitBtn.textContent = 'Sending...';
@@ -64,8 +67,9 @@ const hamburger = document.getElementById('hamburger');
     { src: 'Images/Green-BMW-O.webp',      title: 'Green BMW',                sub: 'Exterior Detail' },
     { src: 'Images/Mache-I.webp',          title: 'Ford Mustang Mach-E',      sub: 'Interior Detail' },
     { src: 'Images/Orange-BMW-I.webp',     title: 'Orange BMW',               sub: 'Interior Detail' },
-    { src: null, title: 'Coming Soon', sub: '' },
-    { src: null, title: 'Coming Soon', sub: '' },
+    { src: 'Images/Gray-GMC-O.webp',       title: 'GMC Sierra AT4X',          sub: 'Exterior Detail' },
+    { src: 'Images/White-F250-O.webp',     title: 'Ford F-250 Super Duty',    sub: 'Exterior Detail' },
+    { src: 'Images/Black-Escalade-Gloss-O.webp', title: 'Cadillac Escalade',  sub: 'Exterior Detail' },
   ];
 
   let currentIndex = 0;
@@ -138,15 +142,17 @@ const hamburger = document.getElementById('hamburger');
     });
   });
 
-  document.getElementById('calcPackage').addEventListener('change', updateCalc);
-  updateCalc();
+  if (document.getElementById('calcPackage')) {
+    document.getElementById('calcPackage').addEventListener('change', updateCalc);
+    updateCalc();
+  }
 
   // QUOTE FORM SUBMISSION
   const quoteForm = document.getElementById('quoteForm');
   const formSubmitBtn = document.getElementById('formSubmitBtn');
   const formStatus = document.getElementById('formStatus');
 
-  quoteForm.addEventListener('submit', async function(e) {
+  if (quoteForm) quoteForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     formSubmitBtn.disabled = true;
     formSubmitBtn.textContent = 'Sending...';
