@@ -1,3 +1,23 @@
+// ── Analytics: send lead actions to Google Tag Manager (dataLayer) ──
+// GTM turns these into GA4 events, which are then marked as key events in GA4.
+window.dataLayer = window.dataLayer || [];
+function trackEvent(name, params) {
+  window.dataLayer.push(Object.assign({ event: name, page_location: location.href }, params || {}));
+}
+
+// One listener catches every call / text / email / social link on every page
+document.addEventListener('click', function (e) {
+  const link = e.target.closest && e.target.closest('a[href]');
+  if (!link) return;
+  const href = link.getAttribute('href') || '';
+  const where = link.className || link.closest('[id]')?.id || '';
+  if (href.startsWith('tel:'))         trackEvent('phone_call',   { link_url: href, link_location: where });
+  else if (href.startsWith('sms:'))    trackEvent('text_message', { link_url: href, link_location: where });
+  else if (href.startsWith('mailto:')) trackEvent('email_click',  { link_url: href, link_location: where });
+  else if (/instagram\.com|facebook\.com/.test(href))
+    trackEvent('social_click', { link_url: href, social_network: href.includes('instagram') ? 'instagram' : 'facebook' });
+}, true);
+
 // Footer year stays current automatically
   document.querySelectorAll('.js-year').forEach(el => { el.textContent = new Date().getFullYear(); });
 
@@ -46,6 +66,7 @@ const hamburger = document.getElementById('hamburger');
       if (response.ok) {
         leadStatus.textContent = '✓ Got it — your 10% off code is on its way to your inbox.';
         leadStatus.className = 'form-status success';
+        trackEvent('generate_lead', { form_name: 'discount_signup' });
         leadForm.reset();
       } else {
         throw new Error('Submission failed');
@@ -169,6 +190,8 @@ const hamburger = document.getElementById('hamburger');
       if (response.ok) {
         formStatus.textContent = '✓ Quote request sent! We\'ll reach out within a couple minutes.';
         formStatus.className = 'form-status success';
+        const pkg = quoteForm.querySelector('[name*="package" i], [name*="service" i]');
+        trackEvent('generate_lead', { form_name: 'quote_request', service: pkg ? pkg.value : '' });
         quoteForm.reset();
       } else {
         throw new Error('Submission failed');
